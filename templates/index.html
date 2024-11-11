@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Used Car Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .form-group {
+            flex: 1;
+            min-width: 100%;
+            text-align: left;
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .submit-btn {
+            background-color: #ff5722;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            background-color: #e64a19;
+        }
+        h3 {
+            color: #007bff;
+            margin-top: 20px;
+        }
+        
+        /* Responsive Styling */
+        @media (min-width: 600px) {
+            .form-group {
+                min-width: 45%; /* Set a smaller width for larger screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Used Car Price Prediction</h2>
+        <form action="/predict" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="brand">Brand</label>
+                    <input type="text" id="brand" name="brand" required>
+                </div>
+                <div class="form-group">
+                    <label for="model">Model</label>
+                    <input type="text" id="model" name="model" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="vehicle_age">Vehicle Age</label>
+                    <input type="number" id="vehicle_age" name="vehicle_age" required>
+                </div>
+                <div class="form-group">
+                    <label for="km_driven">Kilometers Driven</label>
+                    <input type="number" id="km_driven" name="km_driven" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="seller_type">Seller Type</label>
+                    <select id="seller_type" name="seller_type" required>
+                        <option value="Individual">Individual</option>
+                        <option value="Dealer">Dealer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fuel_type">Fuel Type</label>
+                    <select id="fuel_type" name="fuel_type" required>
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="CNG">CNG</option>
+                        <option value="Electric">Electric</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="transmission_type">Transmission Type</label>
+                    <select id="transmission_type" name="transmission_type" required>
+                        <option value="Manual">Manual</option>
+                        <option value="Automatic">Automatic</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mileage">Mileage (km/l)</label>
+                    <input type="number" id="mileage" name="mileage" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="engine">Engine (cc)</label>
+                    <input type="number" id="engine" name="engine" required>
+                </div>
+                <div class="form-group">
+                    <label for="max_power">Max Power (bhp)</label>
+                    <input type="number" id="max_power" name="max_power" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="seats">Seats</label>
+                    <input type="number" id="seats" name="seats" required>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Check Value</button>
+        </form>
+
+        {% if predicted_price %}
+        <h3>{{ predicted_price }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
