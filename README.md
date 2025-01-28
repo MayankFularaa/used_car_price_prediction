@@ -19,8 +19,10 @@ Derived Features:
 
 Vehicle Age was calculated as a derived feature from the year of manufacture.
 
-Model Evaluation:
+# Model Evaluation:
 
 Models like Linear Regression, Random Forest, Gradient Boosting, and XGBoost were trained and evaluated.
+
 Metrics like R² Score and Mean Absolute Error (MAE) were used to identify the best-performing model.
+
 The project successfully built a model capable of accurately predicting used car prices, providing valuable insights for buyers and sellers.
